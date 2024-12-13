@@ -1,7 +1,4 @@
-# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
-# More GitHub Actions for Azure: https://github.com/Azure/actions
-
-name: Build and deploy Node.js app to Azure Web App - Webappback
+name: Build and deploy Node.js app to Azure Web App - webappback
 
 on:
   push:
@@ -46,9 +43,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: build
     environment:
-      name: 'Production'
+      name: 'production'
     permissions:
-      id-token: write # Required for requesting the JWT
+      id-token: write
 
     steps:
       - name: Download artifact from build job
@@ -66,10 +63,9 @@ jobs:
           tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F73D073D16F4423DACB1D82D395D5F2B }}
           subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_04EDDB5F20FF4FB7A75EED594081525A }}
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
+      - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'WebAppback'
-          slot-name: 'Production'
-          package: .
+          app-name: Webappback
+          package: './build.zip'
+          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
