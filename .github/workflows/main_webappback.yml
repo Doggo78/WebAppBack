@@ -23,11 +23,6 @@ jobs:
           cd webapp-backend
           npm install
 
-      - name: Build application (if applicable)
-        run: |
-          cd webapp-backend
-          npm run build --if-present
-
       - name: Zip artifact for deployment
         run: |
           cd webapp-backend
@@ -67,5 +62,5 @@ jobs:
         uses: azure/webapps-deploy@v3
         with:
           app-name: Webappback
-          package: './build.zip'
+          package: './release.zip'
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
