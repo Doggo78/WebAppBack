@@ -8,7 +8,7 @@
     "start": "node server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Mario",
   "license": "ISC",
   "description": "",
   "dependencies": {
