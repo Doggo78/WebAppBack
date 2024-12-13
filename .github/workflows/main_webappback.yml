@@ -70,6 +70,6 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: 'Webappback'
+          app-name: 'gestionservicios'
           slot-name: 'Production'
           package: .
