@@ -49,16 +49,18 @@ jobs:
       - name: Unzip artifact for deployment
         run: unzip release.zip
 
-      - name: Login to Azure
-        uses: azure/login@v2
-        with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_2AACE60E1ED2437B81DA4921F2A33FFE }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_F73D073D16F4423DACB1D82D395D5F2B }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_04EDDB5F20FF4FB7A75EED594081525A }}
-          publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+    - name: Login to Azure
+  uses: azure/login@v2
+  with:
+    client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID }}
+    tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID }}
+    subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID }}
+    # Aquí no se usa publish-profile
 
-      - name: Deploy to Azure WebApp
-        uses: azure/webapps-deploy@v3
-        with:
-          app-name: Webappback
-          package: './release.zip'
+- name: Deploy to Azure WebApp
+  uses: azure/webapps-deploy@v3
+  with:
+    app-name: webappback
+    package: './release.zip'
+    publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+
