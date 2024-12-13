@@ -11,7 +11,11 @@ dotenv.config();
 const app = express();
 
 // Middlewares
-app.use(cors()); // Permitir solicitudes desde cualquier origen
+app.use(cors({
+  origin: 'https://https://proud-sky-0ebd3a31e.4.azurestaticapps.net', // Cambia esta URL por la de tu frontend en Azure
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Métodos HTTP permitidos
+  credentials: true, // Si utilizas cookies o autenticación
+})); // Permitir solicitudes desde cualquier origen
 app.use(express.json()); // Middleware para analizar solicitudes JSON
 
 
@@ -81,4 +85,4 @@ app.get('/', (req, res) => {
 
 // Iniciar el servidor
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Servidor corriendo en el puerto ${PORT}`));
+app.listen(PORT, () => console.log(`Servidor corriendo en Azure`));
