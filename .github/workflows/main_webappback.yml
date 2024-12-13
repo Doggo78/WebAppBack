@@ -23,7 +23,7 @@ jobs:
 
       - name: Navigate to backend directory and install dependencies
         run: |
-          cd backend # Cambia esto si el backend está en otro directorio
+          cd webapp-backend # Cambia esto si el backend está en otro directorio
           npm install
           npm run build --if-present
           npm run test --if-present
