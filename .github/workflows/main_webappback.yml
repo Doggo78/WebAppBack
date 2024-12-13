@@ -60,6 +60,6 @@ jobs:
       - name: Deploy to Azure WebApp
         uses: azure/webapps-deploy@v3
         with:
-          app-name: Webappback
+          app-name: webappback
           package: './release.zip'
           publish-profile: ${{ secrets.AZURE_PUBLISH_PROFILE }}
